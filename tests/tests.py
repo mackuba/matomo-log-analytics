@@ -925,6 +925,21 @@ def test_urlhelper_convert_array_args():
     f.description = 'with multiple inconsistent data strucutres'
     yield f
 
+# TimeHelper tests
+def test_timedelta_from_timezone():
+    def _test(input, expected):
+        delta = import_logs.TimeHelper.timedelta_from_timezone(input)
+        assert delta.total_seconds() == expected
+
+    _test('+0200', 7200)
+    _test('+1400', 50400)
+    _test('+0045', 2700)
+    _test('+0330', 12600)
+    _test('-0500', -18000)
+    _test('-1200', -43200)
+    _test('-0040', -2400)
+    _test('-0230', -9000)
+
 # Matomo error test
 def test_matomo_error_construct():
     """Test that Matomo exception can be created."""
