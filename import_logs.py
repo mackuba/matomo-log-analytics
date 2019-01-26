@@ -2510,6 +2510,12 @@ class Parser(object):
             if hit.referrer == '-':
                 hit.referrer = ''
 
+            hit.referrer = re.sub(r'&amp;', '&', hit.referrer)
+            hit.referrer = re.sub(r'&?utm_\w+=[^&]*', '', hit.referrer)
+            hit.referrer = re.sub(r'&?fbclid=[^&]*', '', hit.referrer)
+            hit.referrer = re.sub(r'\?&', '?', hit.referrer)
+            hit.referrer = re.sub(r'\?$', '', hit.referrer)
+
             try:
                 hit.user_agent = format.get('user_agent')
 
