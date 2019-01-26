@@ -929,7 +929,7 @@ def test_urlhelper_convert_array_args():
 def test_timedelta_from_timezone():
     def _test(input, expected):
         delta = import_logs.TimeHelper.timedelta_from_timezone(input)
-        assert delta.total_seconds() == expected
+        assert delta == datetime.timedelta(0, expected)
 
     _test('+0200', 7200)
     _test('+1400', 50400)
