@@ -101,6 +101,7 @@ EXCLUDED_USER_AGENTS = (
     'cloudflare',
     'crawl',
     'curl',
+    'datanyze',
     'dataprovider',
     'daum',
     'developers.google.com',
